@@ -1,28 +1,36 @@
 // Объявляем: наш корабль, врага, звездное поле
+ArrayList <Bullet> bullets = new ArrayList <Bullet>();
 OurShip edem;
-Enemy badBoy;
+ArrayList <Enemy> enemies = new ArrayList <Enemy>();
 Stars[] galaxy;
 void setup(){
   size(800, 800);
 // Создаем: наш корабль, врага, звезды
   edem = new OurShip();
-  badBoy = new Enemy();
   galaxy = new Stars[500];
   for(int i = 0; i < 500; i++){
   galaxy[i] = new Stars();
   }
-//Увеличивает число пикселей на экране в 2 раза  - по сути, должно смотреться лучше с этим, эффект Ретины
-  pixelDensity(2);
+  createArmy();
 }
 
 void draw(){
  // Отображаем: корабль, врага, звезды
   background(0);
   edem.display();
-  badBoy.display();
+  for(int i = 0; i < enemies.size(); i++){
+  Enemy e = enemies.get(i);
+  e.display();
+  }
   for(int i = 0; i < 500; i++){
   galaxy[i].display();
   }
+  // отображаем ракеты
+  for(int i = 0; i < bullets.size(); i++){
+  Bullet b = bullets.get(i);
+  b.display();
+  }
+  println(bullets.size());
 }
 
 // Функция для отрисовки спрайтов - принимает спрайт, положение для отрисовки, размер картикни
