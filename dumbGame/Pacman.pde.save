@@ -1,0 +1,28 @@
+class Pacman {
+  float x, y, w;
+
+  Pacman() {
+    x = cellWidth / 2;
+    y = cellWidth / 2;
+    w = cellWidth;
+  }
+
+  void display() {
+    fill(#FCF10D);
+    noStroke();
+    rectMode(CENTER);
+    rect(x, y, w / 2, w / 2);
+    
+    textAlign(CENTER, CENTER);
+
+    textSize(w / 4);
+    fill(#0D3EFC);
+    text(score, x, y);
+  }
+}
+
+void keyPressed() {
+  if (key == 'w') p.y -= p.w;
+  if (key == 's') p.y += p.w;
+  if (key == 'a') p.x -= p.w;
+  if (key == 'd') p.x += p
