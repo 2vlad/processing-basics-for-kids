@@ -19,5 +19,9 @@ class Stars {
       d = random(0, 2);
       speed = random(2, 10);
     }
+    float f = random(0,3);
+    d += f;
+    delay(4000);
+    d -= f;
   }
 }

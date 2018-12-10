@@ -20,33 +20,45 @@ class Enemy {
     //само движением и отражение от стены
     x += speed;
     if (x + d > width || x + d < 0) {
-      y += d;
+      y += d/2;
       speed = - speed;
     }
   }
-  void check(){
-  for(int i = 0; i < bullets.size(); i++){
-    Bullet b = bullets.get(i);
-    for(int j = 0; j < enemies.size(); j++){
+  void check() {
+    for (int i = 0; i < bullets.size(); i++) {
+      Bullet b = bullets.get(i);
+      for (int j = 0; j < enemies.size(); j++) {
+        Enemy e = enemies.get(j);
+        float dist = dist(b.x, b.y, e.x, e.y);
+        if (dist < sqrt(2)*d) {
+          score++;
+          bullets.remove(i);
+          enemies.remove(j);
+          break;
+        }
+      }
+    }
+    for (int j = 0; j < enemies.size(); j++) {
       Enemy e = enemies.get(j);
-  float dist = dist(b.x, b.y, e.x, e.y);
-  if(dist < sqrt(2)*d){
-  bullets.remove(i);
-  enemies.remove(j);
-  break;
+      if (e.y > edem.y) {
+        edem.alive = 0;
+      }
+    }
+    if(enemies.size() == 0){
+        println("!!!!");
+      edem.alive = 2;
+      }
   }
-  }
 }
-}
-}
-void createArmy(){
+void createArmy() {
   float xs = 40;
   float ys = 40;
-  int rows = 7;
-  int cols = 7;
+  int rows = 1;
+  int cols = 1
+  ;
   float d = 50;
-  for(int i = 0; i < rows; i++){
-    for (int j = 0; j < cols; j++){
+  for (int i = 0; i < rows; i++) {
+    for (int j = 0; j < cols; j++) {
       enemies.add(new Enemy(xs, ys));
       xs += d;
     }
