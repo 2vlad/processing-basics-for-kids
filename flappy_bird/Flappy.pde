@@ -1,33 +1,61 @@
-class Flappy {
-  float x, y, speed, g, d;
-  Flappy() {
-    x = 400;
-    y = 400;
-    d = 50;
-    speed = 10;
-  }
-  void display() {
-    drawSprite(hero, x, y, d);
-    move();
-    checkHit();
-  }
-  void move() {
-    y += speed/4;
-    if (keyPressed == true && key == ' ') {
-      y -= speed*2;
-    }
-  }
-}
+class Bird {
+  PImage[] flap = new PImage[3];
+  float x, y, gravity;
+  int timer = millis(), delta = 200, i = 0;
 
-void checkHit() {
-  for (int i = 0; i < tube.size(); i++) {
-    Pipe p = tube.get(i);
-    float d = dist(p.x, p.y, bird.x, bird.y);
-    if (d < sqrt( sq(p.h/4) + sq(p.h/2) ) ) {
-      noLoop();
+  Bird() {
+    flap[0] = loadImage("sprites/bluebird-downflap.png");
+    flap[1] = loadImage("sprites/bluebird-midflap.png");
+    flap[2] = loadImage("sprites/bluebird-upflap.png");
+
+    x = width / 4;
+    y = height / 4;
+    gravity = 0;
+    
+  }
+
+  void makeFlyAndJump() {
+    control();
+    display();
+    flap();
+    gravity();
+  }
+
+  void display() {
+    imageMode(CENTER);
+    image(flap[i], 0, 0);
+  }
+
+  void control() {
+    if (keyPressed) {
+      jmp();
+    } else {
+      down();
     }
   }
-  if (bird.y + bird.d > ground) {
-    noLoop();
+
+  void flap() {
+    if (millis() - timer > 100) {
+      i++;
+      timer = millis();
+    }
+    if (i == flap.length - 1) i =0;
+  }
+
+  void jmp() {
+    translate(x, y);
+    rotate(- HALF_PI/4.0);
+    gravity = 0;
+    y -= 5;
+  }
+
+  void down() {
+    translate(x, y);
+    rotate(HALF_PI/4.0);
+    gravity += 0.2;
+  }
+  
+  void gravity() {
+    y += gravity;
   }
 }
