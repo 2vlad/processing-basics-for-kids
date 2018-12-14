@@ -3,9 +3,9 @@ class Platform1 {
   Platform1() {
     x = 0;
     y = 20;
-    d = 50;
-    h = 200;
-    speed = 10;
+    d = 20;
+    h = 150;
+    speed = 15;
   }
   void display() {
     fill(#E896CD);

@@ -1,11 +1,11 @@
 class Platform2 {
   float x, y, d, h, speed;
   Platform2() {
-    d = 50;
-    x = 1150;
+    d = 20;
+    x = 1180;
     y = 20;
-    h = 200;
-    speed = 10;
+    h = 150;
+    speed = 15;
   }
   void display() {
     fill(#E896CD);

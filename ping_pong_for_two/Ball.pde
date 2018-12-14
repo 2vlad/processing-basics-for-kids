@@ -16,11 +16,11 @@ class Ball {
   void move() {
     x += speedX;
     y += speedY;
-    if(y > height || y < 0){
+    if (y > height || y < 0) {
       speedY *= -multiply;
     }
-    if(x > width || x < 0){
-      speedX *= -multiply;
-    }
+    //if (x > width || x < 0) {
+    //  speedX *= -multiply;
+    //}
   }
 }
