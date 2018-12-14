@@ -1,6 +1,6 @@
 Ball pong = new Ball();
-Platform player1 = new Platform();
-Platform player2 = new Platform();
+Platform1 player1 = new Platform1();
+Platform2 player2 = new Platform2();
 void setup(){
   size(1200, 800);
 }
@@ -9,4 +9,5 @@ void draw(){
   background(#1BF2ED);
   pong.display();
   player1.display();
+  player2.display();
 }

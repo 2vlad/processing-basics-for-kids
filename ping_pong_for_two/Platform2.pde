@@ -1,9 +1,9 @@
-class Platform1 {
+class Platform2 {
   float x, y, d, h, speed;
-  Platform1() {
-    x = 0;
-    y = 20;
+  Platform2() {
     d = 50;
+    x = 1150;
+    y = 20;
     h = 200;
     speed = 10;
   }
@@ -14,15 +14,15 @@ class Platform1 {
     check();
   }
   void move() {
-    if (keyPressed == true && key == 'w') {
+    if (keyPressed == true && key == 'o') {
       y -= speed;
     }
-    if (keyPressed == true && key == 's') {
+    if (keyPressed == true && key == 'l') {
       y += speed;
     }
   }
   void check() {
-    if (pong.x - pong.d/2 < x + d && pong.y - pong.d/2 > y && pong.y + pong.d/2 < y + h) {
+    if (pong.x + pong.d/2 > x && pong.y - pong.d/2 > y && pong.y + pong.d/2 < y + h) {
       println("!!!!!");
       pong.speedX *= -1;
       pong.speedY *= -1;

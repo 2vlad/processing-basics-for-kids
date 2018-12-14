@@ -2,8 +2,8 @@ class Ball {
   float x, y, speedX, speedY;
   float d;
   Ball() {
-    x = width/2;
-    y = height/2;
+    x = 600;
+    y = 400;
     speedX = random(10, 15);
     speedY = random(10, 15);
     d = 50;
