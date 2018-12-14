@@ -6,7 +6,7 @@ class Ball {
     y = 400;
     speedX = random(10, 15);
     speedY = random(10, 15);
-    d = 50;
+    d = 20;
   }
   void display() {
     fill(#F0E91F);
@@ -17,10 +17,10 @@ class Ball {
     x += speedX;
     y += speedY;
     if(y > height || y < 0){
-      speedY *= -1;
+      speedY *= -multiply;
     }
     if(x > width || x < 0){
-      speedX *= -1;
+      speedX *= -multiply;
     }
   }
 }

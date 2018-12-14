@@ -14,18 +14,30 @@ class Platform1 {
     check();
   }
   void move() {
-    if (keyPressed == true && key == 'w') {
-      y -= speed;
-    }
-    if (keyPressed == true && key == 's') {
-      y += speed;
+    //if (keyPressed == true && key == 'w') {
+    //  y -= speed;
+    //}
+    //if (keyPressed == true && key == 's') {
+    //  y += speed;
+    //}
+    for (int i = 0; i < command_keys.length; i++) {
+      if (keys_pressed[i]) {
+        switch (command_keys[i]) {
+        case 'w':
+          y -= speed;
+          break;
+        case 's':
+          y += speed;
+          break;
+        }
+      }
     }
   }
   void check() {
     if (pong.x - pong.d/2 < x + d && pong.y - pong.d/2 > y && pong.y + pong.d/2 < y + h) {
       println("!!!!!");
-      pong.speedX *= -1;
-      pong.speedY *= -1;
+      pong.speedX *= -multiply;
+      pong.speedY *= -multiply;
     }
   }
 }
