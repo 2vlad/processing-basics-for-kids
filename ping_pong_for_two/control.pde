@@ -9,6 +9,7 @@ void keyPressed() {
   }
   if ( key == ' ') {
     pong = new Ball();
+    c++;
     loop();
   }
 }
